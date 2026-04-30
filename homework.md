@@ -1,0 +1,10 @@
+- Create connection Request Schema
+- Send Connection request api
+- Proper validation of data
+- Think about all corner cases
+- $or query $and query in mongoose 
+- Schema.pre("save") function
+- Read more about indexes in mongodb
+- why do we need index in DB
+- what is the advantage and disadvantage of creating index?
+- Read the article about compound indexes
