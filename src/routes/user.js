@@ -46,10 +46,9 @@ userRouter.get("/user/connections", userAuth, async (req, res) => {
     });
     res.json({ data });
   } catch (err) {
-    res.status(400).send("Err " + err.message);
+    res.status(400).send({ message: err.message });
   }
 });
-module.exports = userRouter;
 
 userRouter.get("/user/feed", userAuth, async (req, res) => {
   try {
@@ -96,3 +95,4 @@ userRouter.get("/user/feed", userAuth, async (req, res) => {
     });
   }
 });
+module.exports = userRouter;

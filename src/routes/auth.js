@@ -39,15 +39,14 @@ authRouter.post("/signup", async (req, res) => {
 
 authRouter.post("/login", async (req, res) => {
   try {
-    const { emailId, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ emailId: emailId });
+    const user = await User.findOne({ email: email });
     if (!user) {
       throw new Error("Invalid credentials");
     }
     
     const isPasswordValid = await user.validatePassword(password.trim());
-    console.log("isPasswordValid",isPasswordValid)
 
     if (isPasswordValid) {
       const token = await user.getJWT();
