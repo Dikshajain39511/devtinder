@@ -1,9 +1,12 @@
+
 const express = require("express");
 const connectDB = require("./config/database");
+
 const cookieParser = require("cookie-parser");
 const app = express();
 const User = require("./models/user");
 const cors=require("cors")
+require('dotenv').config();
 
 app.use(cors({
   origin: "http://localhost:5173",
@@ -21,6 +24,7 @@ app.use("/",authRouter);
 app.use("/",profileRouter);
 app.use("/",requestRouter);
 app.use("/",userRouter)
+
 // // get user by emailid
 // app.get("/users", async (req, res) => {
 //   const usersEmail = req.body.email;
@@ -99,8 +103,8 @@ app.use("/",userRouter)
 connectDB()
   .then(() => {
     console.log("Database connected successfully");
-    app.listen(7777, () => {
-      console.log("Server is successfully listening to port 7777");
+    app.listen(process.env.PORT, () => {
+      console.log("Server is successfully listening to port " + process.env.PORT);
     });
   })
   .catch((err) => {
